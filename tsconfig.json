@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "isolatedModules": true,
+    // "noImplicitAny": false,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": false,
+    "lib": ["esnext", "dom", "WebWorker"],
+    "types": [
+      "vite/client",
+      "node",
+      "vi-fetch/matchers"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "/@/*": ["src/*"],
+      "vue": ["node_modules/vue/dist/vue.esm.js"]
+    },
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "public"]
+}
