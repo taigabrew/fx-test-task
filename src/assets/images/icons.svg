@@ -1,0 +1,18 @@
+<svg id="icons-lib" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="height: 1px; width: 1px; overflow: hidden; position: absolute; pointer-events: none; opacity: 0.001">
+  <symbol id="icon-sliders" viewBox="0 0 21 21">
+    <path d="M14.5 9V2.5M14.5 18.5V14" />
+    <circle cx="14.5" cy="11.5" r="2.5" />
+    <path d="M6.5 5V2.5M6.5 18.5V10" />
+    <circle cx="6.5" cy="7.5" r="2.5" />
+  </symbol>
+  <symbol id="icon-refresh" viewBox="0 0 21 21">
+    <path
+      d="M4.522 6.919A6.947 6.947 0 0110.5 3.5c3.047 0 5.64 1.976 6.58 4.722m-.625 5.896A6.951 6.951 0 0110.5 17.5c-3.043 0-5.632-1.969-6.575-4.709" />
+    <path d="M18.22 5.464l-1.088 3.003-3.021-1.04M3.038 15.635l.651-3.127 3.137.601" />
+  </symbol>
+  <symbol id="icon-loader" viewBox="0 0 21 21">
+    <path
+      d="M10.483 3.483v2M15.483 5.483l-1.5 1.5M5.483 5.483l1.5 1.5M10.483 17.483v-2M15.483 15.483l-1.5-1.5M5.483 15.483l1.5-1.5M3.483 10.483h2M15.483 10.483h2" />
+  </symbol>
+</svg>

@@ -9,12 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@mojojoejo/vite-plugin-purgecss": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
+    "@types/node": "^20.5.8",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-typescript": "^11.0.3",
     "cross-env": "^7.0.3",

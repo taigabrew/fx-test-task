@@ -1,52 +1,38 @@
 <template>
-  <div class="container">
-    <div v-if="status === 'loading'">loading...</div>
-    <div v-else-if="status === 'ok'">
-      {{ data }}
-    </div>
-    <div v-else>Error</div>
-  </div>
+  <MainLayout>
+    <main
+      class="c-tariff-wrap d-flex flex-grow-1 align-items-center justify-content-center"
+    >
+      <div
+        class="c-spinner is-loading"
+        :class="{
+          'c-spinner--hidden': tariffsStore.status !== 'loading',
+        }"
+      >
+        <IconWrap v-bind="{ name: 'icon-loader' }" class="c-loading-icon" />
+      </div>
+
+      <div v-if="tariffsStore.status === 'ok'">
+        <PricesWrap />
+      </div>
+      <ErrorAlert v-else-if="tariffsStore.status === 'error'" />
+    </main>
+  </MainLayout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import MainLayout from '/@/components/MainLayout.vue'
+import PricesWrap from '/@/components/PricesWrap.vue'
+import IconWrap from '/@/components/IconWrap.vue'
+import ErrorAlert from '/@/components/ErrorAlert.vue'
 
-type TariffsData = {
-  fields: [string, string][]
-  results: {
-    pk: number
-    name: string
-    price: number
-    bandwith: string
-    cores: number
-    hdd_space: string
-    memory: string
-  }[]
-}
+import { fetchTariffs, tariffsStore } from '/@/stores/tariffs'
 
-const status = ref<'ok' | 'loading' | 'error' | 'uninitialized'>(
-  'uninitialized'
-)
-const data = ref<TariffsData>()
-async function getTariffs() {
-  if (status.value === 'loading') return
-
-  status.value = 'loading'
-  try {
-    const resp = await fetch('/api/tariffs.json')
-
-    if (!resp.ok) throw new Error(`Can't fetch tariffs`)
-
-    const _data: TariffsData | '' = await resp.json()
-
-    if (_data) data.value = _data
-
-    status.value = 'ok'
-  } catch (error) {
-    console.error(error)
-    status.value = 'error'
-  }
-}
-
-getTariffs()
+fetchTariffs()
 </script>
+
+<style>
+.c-tariff-wrap {
+  padding-top: 5rem;
+}
+</style>

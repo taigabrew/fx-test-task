@@ -1,0 +1,270 @@
+/* Layout */
+.c-header {
+  border-top: 0.5rem solid black;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+
+  @include media-breakpoint-up(lg) {
+    border-bottom: 0;
+  }
+}
+.c-logo {
+  width: 6rem;
+
+  @include media-breakpoint-up(lg) {
+    width: 10rem;
+  }
+}
+
+/* Price Wrap Title */
+.c-pw-title {
+  font-size: 1rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-weight: 600;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: -2.5rem;
+  }
+}
+
+/* Price Card */
+.c-pc {
+  @include media-breakpoint-up(xl) {
+    min-width: 16rem;
+  }
+}
+
+.c-pc__header {
+  border-bottom: 4px solid hsla(0, 0%, 0%, 0.05);
+}
+
+.c-pc__price-num {
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.c-pc__price-curr {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  position: relative;
+  // top: -0.125rem;
+  top: -1px;
+}
+
+.c-pc__price-period {
+  position: relative;
+  top: -0.125rem;
+}
+
+.c-pc__feat {
+  > dt {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    opacity: 0.8;
+  }
+
+  > dd {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+
+    :last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Settings Panel */
+.c-settings-pan {
+  z-index: 50;
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+
+  @include media-breakpoint-up(md) {
+    right: 0;
+    top: 0;
+    margin-top: 3rem;
+    left: auto;
+    bottom: auto;
+
+    position: absolute;
+    min-width: 16rem;
+  }
+}
+
+
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+
+  .c-settings-pan {
+    transition-duration: 70ms;
+    transition-property: opacity, transform;
+  }
+}
+
+.dialog-leave-active .c-settings-pan {
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.dialog-enter-active .c-settings-pan {
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+
+  .c-settings-pan {
+    opacity: 0;
+  }
+}
+
+.dialog-enter-from .c-settings-pan {
+  transform: translateY(5rem);
+
+  @include media-breakpoint-up(md) {
+    transform: translateY(0);
+  }
+}
+
+.dialog-leave-to .c-settings-pan {
+  transform: translateY(3rem);
+
+  @include media-breakpoint-up(md) {
+    transform: translateY(0);
+  }
+}
+
+
+/* Await Button */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.c-await-button {
+  position: relative;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition-duration: 325ms;
+
+  @include media-breakpoint-up(md) {
+    width: auto;
+  }
+}
+
+.c-await-button__text {
+  display: block;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition-duration: 325ms;
+}
+
+
+.c-await-button__loading-icon-wrap {
+  transform: translateY(-50%) scale(0.01);
+  top: 50%;
+  opacity: 0;
+
+}
+
+.is-loading {
+  .c-await-button__loading-icon-wrap {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  
+  .c-await-button__loading-icon {
+    animation: rotate 1s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  }
+  
+  .c-await-button__text {
+    transform: translateX(0);
+  
+    @include media-breakpoint-up(sm) {
+      transform: translateX(0.75rem);
+    }
+  }
+}
+
+
+
+/* Loading Spinner */
+.c-spinner {
+  pointer-events: none;
+  position: absolute;
+  z-index: 20;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  margin-top: -4rem;
+
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+
+  display: grid;
+
+  .c-loading-icon {
+    margin: auto;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.c-spinner.c-spinner--hidden {
+  opacity: 0;
+  transform: scale(.5);
+}
+
+.c-loading-icon-spoiler,
+.c-loading-icon-wrap {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 250ms;
+}
+
+.c-loading-icon-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0.01);
+  opacity: 0;
+}
+
+
+.is-loading {
+  .c-loading-icon-spoiler {
+    opacity: 0;
+  }
+
+  .c-loading-icon {
+    animation: rotate 1s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  }
+
+  .c-loading-icon-wrap {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
