@@ -1,5 +1,5 @@
 <template>
-  <footer class="py-4 d-flex justify-content-between fs-7 flex-shrink-0">
+  <footer class="py-4 flex justify-between text-sm shrink-0">
     <span
       >Тестовое задание для
       <a href="https://fornex.com/" target="_blank">Fornex</a></span

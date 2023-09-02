@@ -1,0 +1,30 @@
+@import 'tailwindcss/base';
+
+/* Resets */
+@import './animations.css';
+
+/* Components */
+/* @import './inputs.css';
+@import './checkboxes.css';
+@import './switch.css'; */
+@import './buttons.css';
+/* @import './toast.css';
+@import './dialog.css';
+@import './alerts.css';
+@import './thumb.css';
+@import './flags.css';
+@import './tooltip.css';
+@import './components.css'; */
+
+/* Project utils */
+@import './utils.css';
+
+/* Transitions */
+@import './vue-transitions.css';
+@import './loading-animation.css';
+
+/* Overrides */
+/* @import './overrides.css'; */
+/* @import './print.css'; */
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';

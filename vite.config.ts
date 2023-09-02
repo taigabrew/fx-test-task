@@ -1,7 +1,7 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import viteCompression from 'vite-plugin-compression'
-import pluginPurgeCss from '@mojojoejo/vite-plugin-purgecss'
+// import { visualizer } from 'rollup-plugin-visualizer'
 
 import path from 'path'
 
@@ -15,14 +15,25 @@ export default defineConfig({
   plugins: [
     splitVendorChunkPlugin(),
     vue(),
-    pluginPurgeCss({
-      content: ['./src/**/*.vue', './index.html'],
-      css: ['dist/**/*.css'],
-    }),
     viteCompression(),
     viteCompression({
       algorithm: 'brotliCompress',
       ext: '.br',
     }),
   ],
+  build: {
+    target: 'esnext',
+    cssCodeSplit: false,
+    rollupOptions: {
+      plugins: [
+        // visualizer(),
+        // copy({
+        //   targets: [
+        //     { src: 'dist/index.html', dest: 'dist', rename: '200.html' },
+        //   ],
+        //   hook: 'writeBundle',
+        // }),
+      ],
+    },
+  },
 })

@@ -1,0 +1,95 @@
+.c-await-button__text {
+  .is-loading &,
+  &.c-await-button__text--has-icon {
+    transform: translateX(theme('width.3'));
+  }
+}
+
+.c-await-button__text.c-await-button__text--xs-shift-left {
+  .is-loading &,
+  &.c-await-button__text--has-icon {
+    transform: translateX(0);
+
+    @screen sm {
+      transform: translateX(theme('width.3'));
+    }
+  }
+}
+
+.c-await-button__icon {
+  transform: translateY(-50%);
+  top: 50%;
+
+  .is-loading & {
+    transform: translateY(-50%) scale(0.01);
+    opacity: 0;
+  }
+
+  &.c-await-button__icon--only {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
+  .is-loading &.c-await-button__icon--only {
+    transform: translate(-50%, -50%) scale(0.01);
+    opacity: 0;
+  }
+}
+
+.c-await-button__loading-icon-wrap {
+  transform: translateY(-50%) scale(0.01);
+  top: 50%;
+  opacity: 0;
+
+  .is-loading & {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+
+  &.c-await-button__loading-icon-wrap--icon-only {
+    transform: translate(-50%, -50%) scale(0.01);
+    top: 50%;
+    left: 50%;
+  }
+
+  .is-loading &.c-await-button__loading-icon-wrap--icon-only {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.c-await-button__loading-icon {
+  .is-loading & {
+    animation: rotate 1s theme('transitionTimingFunction.in-out-quart') infinite;
+  }
+}
+
+.c-loading-icon-spoiler,
+.c-loading-icon-wrap {
+  @apply transition-cheap duration-250 ease-out-quart;
+}
+
+.c-loading-icon-spoiler {
+  .is-loading & {
+    @apply opacity-0;
+  }
+}
+
+.c-loading-icon {
+  .is-loading & {
+    animation: rotate 1s theme('transitionTimingFunction.out-quart') infinite;
+  }
+}
+
+.c-loading-icon-wrap {
+  @apply absolute top-1/2 left-1/2;
+
+  transform: translate(-50%, -50%) scale(0.01);
+  opacity: 0;
+
+  .is-loading & {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,47 @@
+html {
+  @apply font-sans text-gray-800 bg-black;
+
+  font-feature-settings: 'kern' 1, 'tnum' 1, 'ss01' 1, 'ss02' 1;
+
+  /* &.dark {
+    @apply bg-abyss-500 font-light tracking-wide text-white;
+  } */
+}
+
+
+html,
+body,
+#app {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+#app {
+  @apply flex flex-col bg-white overflow-y-auto;
+}
+
+strong {
+  @apply font-semibold;
+}
+
+img {
+  @apply select-none;
+}
+
+::-moz-selection {
+  @apply text-white bg-black;
+}
+
+::selection {
+  @apply text-white bg-black;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0ms !important;
+    transition-duration: 100ms !important;
+  }
+}
+
+input[type="checkbox"] {
+  @apply cursor-pointer;
+}

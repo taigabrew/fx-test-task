@@ -1,18 +1,15 @@
 <template>
-  <li class="c-pc mb-4 mb-lg-0">
-    <section class="border-2 border-dark-subtle rounded-3">
-      <header class="px-4 py-3 c-pc__header">
-        <h4 class="text-primary-emphasis mb-1">{{ item.name }}</h4>
-        <div class="d-flex align-items-baseline">
-          <span class="c-pc__price-curr text-dark opacity-75">$</span
-          ><span class="c-pc__price-num">{{ item.price }}</span
-          >&thinsp;<span class="c-pc__price-period text-dark opacity-75"
-            ><span class="opacity-75">/</span>&thinsp;мес.</span
-          >
+  <li class="md:min-w-64">
+    <section class="">
+      <header class="px-4 py-3">
+        <h4 class="mb-1">{{ item.name }}</h4>
+        <div class="flex items-baseline">
+          <span class="">$</span><span class="">{{ item.price }}</span
+          >&thinsp;<span class=""><span class="">/</span>&thinsp;мес.</span>
         </div>
       </header>
 
-      <dl class="c-pc__feat px-4 py-2">
+      <dl class="px-4 py-2">
         <template
           v-for="field in item.fields"
           :key="`pk-${item.id}-${field.key}`"
@@ -22,8 +19,8 @@
         </template>
       </dl>
 
-      <footer class="d-grid p-2">
-        <button class="btn btn-light">Выбрать</button>
+      <footer class="p-2">
+        <button class="c-btn bg-gray-50">Выбрать</button>
       </footer>
     </section>
   </li>

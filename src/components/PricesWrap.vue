@@ -1,5 +1,9 @@
 <template>
-  <h2 class="c-pw-title text-dark-emphasis">Тарифы VPS</h2>
+  <h2
+    class="leading-none mb-4 mt-6 uppercase tracking-wide font-semibold lg:-mt-10"
+  >
+    Тарифы VPS
+  </h2>
   <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <PriceCard
       v-for="item in list"

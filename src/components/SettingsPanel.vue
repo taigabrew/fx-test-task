@@ -2,11 +2,11 @@
   <Transition name="dialog">
     <div v-if="isOpened">
       <section
-        class="c-settings-pan bg-white p-3 rounded-2 shadow-lg"
+        class="bg-white p-3 rounded-md shadow-2xl z-50 fixed inset-x-2 bottom-2 md:right-0 md:top-0 md:left-auto md:bottom-auto md:mt-12 md:absolute md:min-w-56"
         @click.stop
       >
         <div class="mb-3">
-          <label for="loading-delay" class="form-label">Задержка, мс</label>
+          <label for="loading-delay">Задержка, мс</label>
           <input
             :value="appStore.delay"
             type="number"
@@ -19,32 +19,29 @@
           />
         </div>
 
-        <div class="form-check">
+        <div>
           <input
             type="checkbox"
             name="is-error-resp"
             :disabled="tariffsStore.status === 'loading'"
             :checked="appStore.isErrorResp"
             id="is-error-resp"
-            class="form-check-input"
             @change="updateIsError"
           />
-          <label class="form-check-label" for="is-error-resp">
-            Эмуляция ошибки
-          </label>
+          <label for="is-error-resp"> Эмуляция ошибки </label>
         </div>
 
         <footer class="mt-4">
           <button
             :disabled="tariffsStore.status === 'loading'"
-            class="btn btn-dark d-flex c-await-button"
+            class="c-btn flex c-await-button c-btn--black items-center"
             :class="{
               'is-loading': tariffsStore.status === 'loading',
             }"
             @click="fetchTariffs"
           >
             <span
-              class="c-await-button__loading-icon-wrap position-absolute start-0 d-block ms-2 w-6 h-6"
+              class="c-await-button__loading-icon-wrap absolute left-0 block ml-2 w-6 h-6"
             >
               <IconWrap
                 v-bind="{ name: 'icon-loader' }"

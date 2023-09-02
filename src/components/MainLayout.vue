@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex flex-column flex-grow-1">
+  <div class="container flex flex-col grow">
     <LayoutHeader />
     <slot />
     <LayoutFooter />
