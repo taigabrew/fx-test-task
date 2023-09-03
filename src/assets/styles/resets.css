@@ -1,11 +1,11 @@
 html {
   @apply font-sans text-gray-800 bg-black;
 
-  font-feature-settings: 'kern' 1, 'tnum' 1, 'ss01' 1, 'ss02' 1;
+  /* font-feature-settings: 'kern' 1, 'tnum' 1, 'ss01' 1, 'ss02' 1; */
 
-  /* &.dark {
-    @apply bg-abyss-500 font-light tracking-wide text-white;
-  } */
+  &.dark {
+    @apply bg-gray-950 font-light tracking-wide text-white;
+  }
 }
 
 
@@ -16,7 +16,7 @@ body,
 }
 
 #app {
-  @apply flex flex-col bg-gray-100 overflow-y-auto;
+  @apply flex flex-col bg-gray-100 dark:bg-gray-950 overflow-y-auto;
 }
 
 strong {

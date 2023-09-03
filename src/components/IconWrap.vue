@@ -33,6 +33,8 @@ export type IconName =
   | 'icon-reverse'
   | 'icon-harddrive'
   | 'icon-chip'
+  | 'icon-sun'
+  | 'icon-moon'
 
 defineProps<{
   name: IconName

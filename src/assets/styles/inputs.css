@@ -9,33 +9,28 @@
 }
 
 .c-input {
-  @apply w-full bg-gray-100 rounded border border-transparent transition duration-250 ease-out-sine text-gray-700 select-text;
-  /* @apply w-full bg-gray-100 dark:bg-abyss-700 rounded border border-transparent transition duration-250 ease-out-sine text-gray-700 dark:text-abyss-50 select-text; */
+  @apply w-full bg-gray-100 dark:bg-gray-950 rounded border border-transparent transition duration-250 ease-out-sine text-gray-700 dark:text-gray-50 select-text;
 
   &:hover {
-    @apply bg-gray-200;
-    /* @apply bg-gray-200 dark:bg-abyss-800; */
+    @apply bg-gray-200 dark:bg-black;
   }
 
   &:focus {
-    @apply border-gray-200 bg-white ring-3 ring-teal-300;
-    /* @apply border-gray-200 bg-white dark:bg-abyss-800 dark:border-abyss-800 ring-3 ring-teal-300 dark:ring-turquoise-500; */
+    @apply border-gray-200 bg-white dark:bg-gray-950 dark:border-gray-900 ring-3 ring-gray-300 dark:ring-gray-600;
 
     outline: none;
   }
 }
 
 .c-input__label {
-  @apply font-semibold text-gray-700;
-  /* @apply font-semibold dark:font-medium text-gray-700 dark:text-white; */
+  @apply font-semibold text-gray-700 dark:font-medium dark:text-white;
 
   text-wrap: balance;
 }
 
 .c-input.c-input--readonly {
   &, &:focus, &:hover {
-    @apply border-gray-300 bg-transparent shadow-none cursor-default;
-    /* @apply border-gray-300 dark:border-abyss-700 bg-transparent shadow-none cursor-default; */
+    @apply border-gray-300 dark:border-gray-900 bg-transparent shadow-none cursor-default;
 
     resize: none;
 
@@ -52,10 +47,6 @@
 
   .c-input-wrap--text-when-disabled.c-input-wrap--empty & {
     @apply h-0;
-
-    /* & + .c-alert {
-      @apply -mt-5;
-    } */
   }
 }
 

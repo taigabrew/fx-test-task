@@ -1,6 +1,2 @@
-## tw
-- register on danil.dev
-  - fx-task
-  - fx-task-tw
-
-- dark mode?
+- dark mode
+  - normal color palette

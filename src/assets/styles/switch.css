@@ -1,14 +1,12 @@
 .c-switch {
-  @apply h-8 bg-gray-200;
-  /* @apply h-8 bg-gray-200 dark:bg-abyss-100 dark:border-none; */
+  @apply h-8 bg-gray-200 dark:bg-gray-300 dark:border-none;
   width: calc(3.5rem + 1px);
 
   box-shadow: inset 0 2px 3px hsla(0, 0%, 0%, 0.1);
 }
 
 .c-switch-input:checked + .c-switch {
-  @apply bg-emerald-500;
-  /* @apply bg-emerald-500 dark:bg-turquoise-500; */
+  @apply bg-emerald-500 dark:bg-teal-600;
 }
 
 .c-switch__indicator {

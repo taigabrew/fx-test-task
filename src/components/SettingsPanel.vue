@@ -2,7 +2,7 @@
   <Transition name="dialog">
     <div v-if="isOpened">
       <section
-        class="fixed inset-x-2 bottom-2 z-50 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-2xl md:absolute md:bottom-auto md:left-auto md:right-0 md:top-0 md:mt-12 md:w-72 md:border-0 md:p-6"
+        class="fixed inset-x-2 bottom-2 z-50 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-2xl dark:border-black dark:bg-gray-900 md:absolute md:bottom-auto md:left-auto md:right-0 md:top-0 md:mt-12 md:w-72 md:border-0 md:p-6 dark:md:border-2"
         @click.stop
       >
         <NumberEditor
