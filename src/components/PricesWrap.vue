@@ -1,6 +1,8 @@
 <template>
-  <h2 class="c-pw-title text-dark-emphasis">Тарифы VPS</h2>
-  <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+  <h2 class="c-pw-title text-dark-emphasis text-center text-lg-start">
+    Тарифы VPS
+  </h2>
+  <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
     <PriceCard
       v-for="item in list"
       :key="`pk-${item.id}`"

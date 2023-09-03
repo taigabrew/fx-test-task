@@ -32,6 +32,8 @@
 
 /* Price Card */
 .c-pc {
+  max-width: 20rem;
+
   @include media-breakpoint-up(xl) {
     min-width: 16rem;
   }
