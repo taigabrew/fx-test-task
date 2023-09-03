@@ -4,24 +4,20 @@ import { appStore } from './app'
 import { timeoutPromise } from '/@/utils/utils'
 import type { StoreStatus } from '/@/types'
 
-export type TariffsData = {
-  fields: [string, string][]
-  results: ({
-    pk: number
-    name: string
-    price: number
-  } & Record<string, string | number>)[]
-}
-
 export type TariffItem = {
-  id: number
+  pk: number
   name: string
   price: number
-  fields: {
-    key: string
-    name: string
-    value: string | number
-  }[]
+
+  cores: number
+  bandwith: string
+  hdd_space: string
+  memory: string
+}
+
+export type TariffsData = {
+  fields: [string, string][]
+  results: TariffItem[]
 }
 
 export const tariffsStore = reactive<{

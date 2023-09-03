@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col grow">
+  <div class="flex grow flex-col">
     <LayoutHeader />
     <slot />
     <LayoutFooter />
@@ -21,6 +21,8 @@ function checkMobileVH() {
 
   if (isSm || isIOS) {
     const vh = window.innerHeight * 0.01
+
+    console.log(vh)
     document.documentElement.style.setProperty('--vh', `${vh}px`)
   }
 }

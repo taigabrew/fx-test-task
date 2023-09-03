@@ -1,12 +1,13 @@
 @import 'tailwindcss/base';
 
 /* Resets */
+@import './resets.css';
 @import './animations.css';
 
 /* Components */
-/* @import './inputs.css';
-@import './checkboxes.css';
-@import './switch.css'; */
+@import './inputs.css';
+/* @import './checkboxes.css'; */
+@import './switch.css';
 @import './buttons.css';
 /* @import './toast.css';
 @import './dialog.css';

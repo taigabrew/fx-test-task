@@ -1,17 +1,10 @@
 .c-await-button__text {
   .is-loading &,
   &.c-await-button__text--has-icon {
-    transform: translateX(theme('width.3'));
-  }
-}
+    transform: translateX(theme('width.4'));
 
-.c-await-button__text.c-await-button__text--xs-shift-left {
-  .is-loading &,
-  &.c-await-button__text--has-icon {
-    transform: translateX(0);
-
-    @screen sm {
-      transform: translateX(theme('width.3'));
+    @screen md {
+      transform: translateX(theme('width.2'));
     }
   }
 }
@@ -24,17 +17,6 @@
     transform: translateY(-50%) scale(0.01);
     opacity: 0;
   }
-
-  &.c-await-button__icon--only {
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-  }
-
-  .is-loading &.c-await-button__icon--only {
-    transform: translate(-50%, -50%) scale(0.01);
-    opacity: 0;
-  }
 }
 
 .c-await-button__loading-icon-wrap {
@@ -44,17 +26,6 @@
 
   .is-loading & {
     transform: translateY(-50%) scale(1);
-    opacity: 1;
-  }
-
-  &.c-await-button__loading-icon-wrap--icon-only {
-    transform: translate(-50%, -50%) scale(0.01);
-    top: 50%;
-    left: 50%;
-  }
-
-  .is-loading &.c-await-button__loading-icon-wrap--icon-only {
-    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
 }

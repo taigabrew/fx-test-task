@@ -16,7 +16,7 @@ body,
 }
 
 #app {
-  @apply flex flex-col bg-white overflow-y-auto;
+  @apply flex flex-col bg-gray-100 overflow-y-auto;
 }
 
 strong {

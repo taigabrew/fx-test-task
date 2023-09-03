@@ -1,52 +1,23 @@
 <template>
   <h2
-    class="leading-none mb-4 mt-6 uppercase tracking-wide font-semibold lg:-mt-10"
+    class="mb-4 mt-6 font-semibold uppercase leading-none tracking-wide lg:-mt-10"
   >
     Тарифы VPS
   </h2>
-  <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+  <ul
+    v-if="tariffsStore.data?.results"
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+  >
     <PriceCard
-      v-for="item in list"
-      :key="`pk-${item.id}`"
+      v-for="item in tariffsStore.data?.results"
+      :key="`pk-${item.pk}`"
       v-bind="{ item }"
-      class="col"
     />
   </ul>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { tariffsStore, TariffItem } from '/@/stores/tariffs'
+import { tariffsStore } from '/@/stores/tariffs'
 
 import PriceCard from './PriceCard.vue'
-
-const list = computed(() => {
-  const _l: TariffItem[] = []
-
-  if (!tariffsStore.data) return _l
-
-  const { results, fields } = tariffsStore.data
-
-  for (const item of results) {
-    const _item = {
-      id: item.pk,
-      name: item.name,
-      price: item.price,
-      fields: [],
-    } as TariffItem
-
-    for (const field of fields) {
-      const [key, name] = field
-      _item.fields.push({
-        key,
-        name,
-        value: item[key],
-      })
-    }
-
-    _l.push(_item)
-  }
-
-  return _l
-})
 </script>

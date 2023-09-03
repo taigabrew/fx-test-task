@@ -1,6 +1,8 @@
 <template>
   <MainLayout>
-    <main class="flex grow items-center justify-center pt-20">
+    <main
+      class="container mx-auto flex grow items-center justify-center px-4 pt-20"
+    >
       <div
         class="is-loading pointer-events-none absolute inset-0 z-20 -mt-16 grid transition-cheap duration-300"
         :class="{
@@ -13,7 +15,7 @@
         />
       </div>
 
-      <div v-if="tariffsStore.status === 'ok'">
+      <div v-if="tariffsStore.status === 'ok'" class="w-full">
         <PricesWrap />
       </div>
       <ErrorAlert v-else-if="tariffsStore.status === 'error'" />

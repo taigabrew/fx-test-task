@@ -26,7 +26,13 @@ const iconsWrapper = document.getElementById('icons')
 
 if (!iconsEl && iconsWrapper) iconsWrapper.appendChild(iconsFragment)
 
-type IconName = 'icon-sliders' | 'icon-refresh' | 'icon-loader'
+export type IconName =
+  | 'icon-sliders'
+  | 'icon-refresh'
+  | 'icon-loader'
+  | 'icon-reverse'
+  | 'icon-harddrive'
+  | 'icon-chip'
 
 defineProps<{
   name: IconName

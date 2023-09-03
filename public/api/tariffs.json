@@ -12,7 +12,7 @@
       "price": 5,
       "bandwith": "100 Мбит/сек",
       "cores": 1,
-      "hdd_space": "10 ГБ SSD",
+      "hdd_space": "10 ГБ",
       "memory": "1 ГБ"
     },
     {
@@ -21,7 +21,7 @@
       "price": 10,
       "bandwith": "100 Мбит/сек",
       "cores": 1,
-      "hdd_space": "20 ГБ SSD",
+      "hdd_space": "20 ГБ",
       "memory": "2 ГБ"
     },
     {
@@ -30,7 +30,7 @@
       "price": 160,
       "bandwith": "100 Мбит/сек",
       "cores": 6,
-      "hdd_space": "120 ГБ SSD",
+      "hdd_space": "120 ГБ",
       "memory": "32 ГБ"
     },
     {
@@ -39,7 +39,7 @@
       "price": 20,
       "bandwith": "100 Мбит/сек",
       "cores": 2,
-      "hdd_space": "30 ГБ SSD",
+      "hdd_space": "30 ГБ",
       "memory": "4 ГБ"
     }
   ]

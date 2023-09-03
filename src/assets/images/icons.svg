@@ -1,5 +1,5 @@
 <svg id="icons-lib" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-style="height: 1px; width: 1px; overflow: hidden; position: absolute; pointer-events: none; opacity: 0.001">
+  style="height: 1px; width: 1px; overflow: hidden; position: absolute; pointer-events: none; opacity: 0.001">
   <symbol id="icon-sliders" viewBox="0 0 21 21">
     <path d="M14.5 9V2.5M14.5 18.5V14" />
     <circle cx="14.5" cy="11.5" r="2.5" />
@@ -14,5 +14,17 @@ style="height: 1px; width: 1px; overflow: hidden; position: absolute; pointer-ev
   <symbol id="icon-loader" viewBox="0 0 21 21">
     <path
       d="M10.483 3.483v2M15.483 5.483l-1.5 1.5M5.483 5.483l1.5 1.5M10.483 17.483v-2M15.483 15.483l-1.5-1.5M5.483 15.483l1.5-1.5M3.483 10.483h2M15.483 10.483h2" />
+  </symbol>
+  <symbol id="icon-reverse" viewBox="0 0 21 21">
+    <path d="m8.5 10.5-4 4 4 4M16.5 14.5h-12M12.5 2.5l4 4-4 4M16.5 6.5h-12" />
+  </symbol>
+  <symbol id="icon-harddrive" viewBox="0 0 21 21">
+    <path
+      d="M2.5 15.63v-4l2.481-5.788A2 2 0 0 1 6.819 4.63h7.362a2 2 0 0 1 1.838 1.212L18.5 11.63v4a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2Z" />
+    <path fill="currentColor" d="M4 14.13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
+    <path d="M3 11.63h15" />
+  </symbol>
+  <symbol id="icon-chip" viewBox="0 0 21 21">
+    <path d="M15 7.5A1.503 1.503 0 0 0 13.5 6h-6A1.503 1.503 0 0 0 6 7.5v6A1.503 1.503 0 0 0 7.5 15h6a1.503 1.503 0 0 0 1.5-1.5v-6ZM7.6 17.5V19M7.6 2v1.5M10.5 17.5V19M10.5 2v1.5M13.4 17.5l.006 1.5M13.4 2l.006 1.5M17.5 13.403H19M2 13.403h1.5M17.5 10.503H19M2 10.503h1.5M17.5 7.603l1.5-.006M2 7.603l1.5-.006"/>
   </symbol>
 </svg>
