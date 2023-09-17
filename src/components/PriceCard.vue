@@ -4,7 +4,7 @@
   >
     <section>
       <header
-        class="darl:border-gray-100 border-b-2 border-black px-4 pb-2 pt-3"
+        class="border-b-2 border-gray-100 px-4 pb-2 pt-3 dark:border-black xl:px-8 xl:py-6 xl:pb-5"
       >
         <h4
           class="text-xl text-gray-700 dark:text-emerald-400 sm:mb-2 sm:text-lg"

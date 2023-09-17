@@ -10,7 +10,7 @@
       </div>
 
       <div class="flex gap-2">
-        <button
+        <!-- <button
           class="c-btn bg-white p-1 dark:bg-gray-900 dark:hover:bg-gray-800"
           @click="toggleTheme"
         >
@@ -20,7 +20,7 @@
             }"
             class="h-6 w-6"
           />
-        </button>
+        </button> -->
         <div class="relative">
           <button
             class="c-btn bg-white p-1 dark:bg-gray-900 dark:hover:bg-gray-800"
