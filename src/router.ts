@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const HomePage = () => import('./pages/HomePage.vue')
 const CustomVPS = () => import('./pages/CustomVPS.vue')
+const ErrorAlert = () => import('./components/ErrorAlert.vue')
 
 const routes = [
   { path: '/', component: HomePage, name: 'home' },
@@ -9,8 +10,8 @@ const routes = [
 
   {
     path: '/:pathMatch(.*)*',
-    name: 'ErrorWrap',
-    component: 'Error',
+    name: 'error-page',
+    component: ErrorAlert,
     props: {
       error: {
         status: 404,

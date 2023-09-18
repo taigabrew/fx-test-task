@@ -1,5 +1,5 @@
 .c-btn {
-  @apply rounded py-2 px-5 transition-all duration-325 ease-out-sine border-0 outline-none font-normal;
+  @apply rounded-lg py-2 px-5 transition-all duration-325 ease-out-sine border-0 outline-none font-normal;
 
   &:hover,
   &:focus {

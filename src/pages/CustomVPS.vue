@@ -1,72 +1,26 @@
 <template>
   <main
-    class="container mx-auto flex grow items-center justify-center px-4 pt-20"
+    class="container mx-auto flex grow flex-col items-center px-4 pb-32 pt-32"
   >
     <section>
-      <!-- <div
-        class="fixed right-0 top-24 z-30 mb-2 flex items-center rounded-full bg-gray-50 p-2"
-      >
-        <label
-          for="form-type--stand-alone"
-          class="block cursor-pointer rounded-full border px-3 py-1 text-sm"
-          :class="{
-            'border-emerald-400 bg-emerald-100 text-emerald-700 ':
-              formType === 'stand-alone',
-            'border-transparent bg-gray-50 text-gray-500':
-              formType !== 'stand-alone',
-          }"
-        >
-          <input
-            id="form-type--stand-alone"
-            value="stand-alone"
-            name="custom-vps-drive-type"
-            :checked="formType === 'stand-alone'"
-            type="radio"
-            class="absolute opacity-0"
-            @change="formType = 'stand-alone'"
-          />
-          Standalone
-        </label>
-        <label
-          for="form-type--one-of"
-          class="block cursor-pointer rounded-full border px-3 py-1 text-sm"
-          :class="{
-            'border-emerald-400 bg-emerald-100 text-emerald-700 ':
-              formType === 'one-of',
-            'border-transparent bg-gray-50 text-gray-500':
-              formType !== 'one-of',
-          }"
-        >
-          <input
-            id="form-type--one-of"
-            value="one-of"
-            name="custom-vps-drive-type"
-            :checked="formType === 'one-of'"
-            type="radio"
-            class="absolute opacity-0"
-            @change="formType = 'one-of'"
-          />
-          One of
-        </label>
-      </div> -->
-
       <form
         v-if="formType === 'stand-alone'"
-        class="flex gap-10 rounded-2xl bg-white p-4"
+        class="flex gap-10 rounded-3xl bg-white p-4"
       >
         <div class="p-12">
-          <h4 class="mb-0.5 text-xl font-bold">Custom VPS configuration</h4>
-          <p class="mb-8 max-w-sm text-gray-500">
+          <h4 class="-mt-4 mb-8 text-xl font-bold">Custom VPS configuration</h4>
+          <!-- <h4 class="mb-0.5 text-xl font-bold">Custom VPS configuration</h4> -->
+          <!-- <p class="mb-8 max-w-sm text-gray-500">
             One/two sentences about how you can customize your VPS. Or we can
             discard of this paragraph
-          </p>
+          </p> -->
           <div data-name="sliders-wrap">
-            <div class="mb-6 grid grid-cols-5 items-end gap-4">
-              <div class="col-span-4">
+            <div class="mb-6 grid grid-cols-7 items-end gap-4">
+              <div class="col-span-5">
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
-                  >Cores</label
+                  >CPU cores</label
                 >
                 <input
                   id="custom-vps-cores-count"
@@ -78,10 +32,12 @@
                 />
               </div>
 
-              <span class="text-right text-2xl font-bold">{{ cores }}</span>
+              <span class="col-span-2 text-right text-2xl font-bold">{{
+                cores
+              }}</span>
             </div>
-            <div class="mb-6 grid grid-cols-5 items-end gap-4">
-              <div class="col-span-4">
+            <div class="mb-6 grid grid-cols-7 items-end gap-4">
+              <div class="col-span-5">
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
@@ -96,8 +52,12 @@
                   class="c-input-range"
                 />
               </div>
-              <div class="relative flex items-baseline justify-end gap-0.5">
-                <span class="text-2xl font-bold">{{ memory }}</span>
+              <div
+                class="relative col-span-2 flex items-baseline justify-end gap-0.5"
+              >
+                <span class="min-w-10 text-right text-2xl font-bold">{{
+                  memory
+                }}</span>
                 <span
                   class="absolute bottom-1 left-full mb-1 ml-0.5 text-lg leading-4 text-gray-500"
                   >Gb</span
@@ -105,8 +65,8 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-5 items-end gap-4">
-              <div class="col-span-4">
+            <div class="item-end grid grid-cols-7 gap-4">
+              <div class="col-span-5">
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
@@ -156,8 +116,8 @@
                   class="c-input-range"
                 />
               </div>
-              <div class="relative flex items-baseline justify-end gap-0.5">
-                <span class="text-2xl font-bold">{{ drive }}</span>
+              <div class="relative col-span-2 flex items-end justify-end gap-1">
+                <span class="text-right text-2xl font-bold">{{ drive }}</span>
                 <span
                   class="absolute bottom-1 left-full mb-1 ml-0.5 text-lg leading-4 text-gray-500"
                   >Gb</span
@@ -168,7 +128,7 @@
         </div>
         <div
           data-name="card"
-          class="relative flex min-w-96 flex-col items-center justify-center rounded-lg border border-emerald-300 p-8"
+          class="relative flex min-w-96 flex-col items-center justify-center rounded-2xl border-2 border-emerald-400 p-8"
         >
           <span
             class="absolute top-12 inline-block select-none justify-self-start rounded-full border border-emerald-500 bg-emerald-50 px-4 text-sm text-emerald-500"
@@ -196,7 +156,7 @@
           </div>
           <button
             type="submit"
-            class="c-btn w-full border-0 bg-emerald-400 py-2.5 text-lg tracking-wide text-white hover:bg-emerald-600"
+            class="c-btn w-full border-0 bg-emerald-400 py-2.5 text-lg uppercase tracking-wider text-white hover:bg-emerald-600"
             @click.prevent="submit"
           >
             Select
@@ -207,11 +167,91 @@
         </div>
       </form>
     </section>
+
+    <section class="mt-12 min-w-2xl rounded-3xl bg-white px-16 py-12">
+      <header class="-mt-4 text-center font-medium text-gray-500">
+        Predefined price plans
+      </header>
+      <ul v-if="tariffsStore.data?.results" class="mt-8">
+        <li
+          class="grid grid-cols-7 items-center rounded border-gray-100 bg-gray-50 py-3 last:border-0"
+        >
+          <div class="col-span-2"></div>
+          <div
+            class="col-span-4 grid grid-cols-4 gap-6 pr-12 text-xs font-medium uppercase tracking-wider text-gray-500"
+          >
+            <button class="text-right">CPU cores</button>
+            <button class="text-right">Memory</button>
+            <button class="text-right">Drive</button>
+            <button class="text-right">Price</button>
+          </div>
+        </li>
+        <li
+          v-for="(item, index) in tariffsStore.data?.results"
+          :key="`pk-vps-${item.pk}`"
+          class="grid grid-cols-7 items-center"
+          :class="{
+            'relative -mx-9 -mt-px rounded-2xl border-2 border-emerald-300 px-8 py-6':
+              item.pk === 434,
+            'border-b-2 border-gray-100 py-4 last:border-0': item.pk !== 434,
+          }"
+        >
+          <span
+            v-if="item.pk === 434"
+            class="absolute -top-0.5 left-8 -translate-y-1/2 transform rounded-full border-2 border-emerald-300 bg-white px-4 py-0.5 text-xs font-normal leading-none text-emerald-500"
+            >Popular</span
+          >
+
+          <div
+            class="col-span-2"
+            :class="{
+              'text-sm text-gray-600': item.pk !== 434,
+              'flex flex-col items-start font-medium text-emerald-600':
+                item.pk === 434,
+            }"
+          >
+            {{ item.name }}
+          </div>
+
+          <div class="col-span-4 grid grid-cols-4 gap-6 pr-12 text-gray-800">
+            <span class="text-right font-bold">{{ item.cores }}</span>
+            <span class="text-right"
+              ><span class="font-bold">{{ item.memory.split(' ')[0] }}</span
+              >&thinsp;<span class="text-xxs text-gray-600">{{
+                item.memory.split(' ')[1]
+              }}</span></span
+            >
+            <span class="text-right">
+              <span class="font-bold">{{ item.hdd_space.split(' ')[0] }}</span
+              >&thinsp;<span class="text-xxs text-gray-600"
+                >{{ item.hdd_space.split(' ')[1] }} SSD</span
+              ></span
+            >
+            <span class="text-right"
+              ><span class="font-bold">{{ item.price }}</span
+              >&thinsp;<span class="text-xxs text-gray-600">€/mo</span></span
+            >
+          </div>
+
+          <button
+            class="c-btn py-1 text-sm"
+            :class="{
+              ' bg-emerald-400 text-white hover:bg-emerald-500':
+                item.pk === 434,
+              'border-2 border-emerald-500 text-emerald-700': item.pk !== 434,
+            }"
+          >
+            Select
+          </button>
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
+import { fetchTariffs, tariffsStore } from '/@/stores/tariffs'
 
 const formType = ref<'stand-alone' | 'one-of'>('stand-alone')
 
@@ -265,6 +305,8 @@ const priceWithDiscount = computed(() => {
 
   return [getInt(num), getRemainder(num)]
 })
+
+fetchTariffs()
 </script>
 
 <styles lang="postcss">
@@ -282,6 +324,8 @@ const priceWithDiscount = computed(() => {
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   -webkit-appearance: none;
+
+  @apply min-w-52;
 }
 
 .c-input-range:focus {
