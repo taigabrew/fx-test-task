@@ -35,6 +35,8 @@ export type IconName =
   | 'icon-chip'
   | 'icon-sun'
   | 'icon-moon'
+  | 'icon-arrow-up'
+  | 'icon-arrow-down'
 
 defineProps<{
   name: IconName

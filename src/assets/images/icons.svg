@@ -35,4 +35,12 @@
     <circle cx="10.5" cy="10.5" r="4" />
     <path d="M4 4l1.5 1.5M10.5 19.5v-2M17 17l-1.5-1.5M4 17l1.5-1.5M1.5 10.5h2M17.5 10.5h2" />
   </symbol>
+  <symbol id="icon-arrow-down" viewBox="0 0 21 21">
+    <path d="M10.5 16V4.975" />
+    <path d="M16.012 10.488L10.5 16l-5.512-5.512" />
+  </symbol>
+  <symbol id="icon-arrow-up" viewBox="0 0 21 21">
+    <path d="M10.5 4.975V16" />
+    <path d="M16.012 10.488L10.5 4.975l-5.512 5.513" />
+  </symbol>
 </svg>

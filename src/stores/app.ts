@@ -8,10 +8,12 @@ export const appStore = reactive<{
   delay: number
   isErrorResp: boolean
   theme: UITheme
+  hasDiscount: boolean
 }>({
   delay: 0,
   isErrorResp: false,
   theme: localTheme,
+  hasDiscount: true,
 })
 
 function updateHeader(toDark: boolean) {

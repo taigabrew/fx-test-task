@@ -1,27 +1,33 @@
 <template>
   <main
-    class="container mx-auto flex grow flex-col items-center px-4 pb-32 pt-32"
+    class="container mx-auto flex grow flex-col items-center overflow-x-hidden pt-20 sm:px-4 sm:pb-32 sm:pt-32"
   >
-    <section>
+    <section class="max-w-3xl lg:max-w-4xl">
       <form
         v-if="formType === 'stand-alone'"
-        class="flex gap-10 rounded-3xl bg-white p-4"
+        class="flex flex-col gap-4 rounded-3xl bg-white p-4 sm:min-w-sm md:min-w-lg md:flex-row"
       >
-        <div class="p-12">
-          <h4 class="-mt-4 mb-8 text-xl font-bold">Custom VPS configuration</h4>
+        <div class="pb-8 pl-4 pr-8 pt-8 md:p-10 lg:p-12">
+          <h4 class="-mt-4 mb-8 text-base font-bold md:text-xl">
+            Гибкая VPS конфигурация
+          </h4>
+          <!-- <h4 class="-mt-4 mb-8 text-xl font-bold">Custom VPS configuration</h4> -->
           <!-- <h4 class="mb-0.5 text-xl font-bold">Custom VPS configuration</h4> -->
           <!-- <p class="mb-8 max-w-sm text-gray-500">
             One/two sentences about how you can customize your VPS. Or we can
             discard of this paragraph
           </p> -->
           <div data-name="sliders-wrap">
-            <div class="mb-6 grid grid-cols-7 items-end gap-4">
+            <div
+              class="mb-6 grid grid-cols-7 items-end gap-6 md:gap-4 lg:gap-6"
+            >
               <div class="col-span-5">
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
-                  >CPU cores</label
+                  >Процессор</label
                 >
+                <!-- >CPU</label -->
                 <input
                   id="custom-vps-cores-count"
                   v-model.number="cores"
@@ -32,17 +38,22 @@
                 />
               </div>
 
-              <span class="col-span-2 text-right text-2xl font-bold">{{
-                cores
-              }}</span>
+              <input
+                v-model.number="cores"
+                type="number"
+                min="1"
+                max="32"
+                class="col-span-2 appearance-none rounded text-right text-2xl font-bold transition-colors focus:bg-gray-100 focus:outline-none"
+              />
             </div>
             <div class="mb-6 grid grid-cols-7 items-end gap-4">
               <div class="col-span-5">
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
-                  >Mermory</label
+                  >Память</label
                 >
+                <!-- >Mermory</label -->
                 <input
                   id="custom-vps-memory-count"
                   v-model.number="memory"
@@ -55,12 +66,15 @@
               <div
                 class="relative col-span-2 flex items-baseline justify-end gap-0.5"
               >
-                <span class="min-w-10 text-right text-2xl font-bold">{{
-                  memory
-                }}</span>
-                <span
+                <input
+                  v-model.number="memory"
+                  min="2"
+                  max="64"
+                  type="number"
+                  class="w-full appearance-none rounded text-right text-2xl font-bold transition-colors focus:bg-gray-100 focus:outline-none"
+                /><span
                   class="absolute bottom-1 left-full mb-1 ml-0.5 text-lg leading-4 text-gray-500"
-                  >Gb</span
+                  >ГБ</span
                 >
               </div>
             </div>
@@ -70,9 +84,10 @@
                 <label
                   for="custom-vps-cores-count"
                   class="mb-2 block text-gray-500"
-                  >Drive</label
+                  >NVMe диск</label
                 >
-                <ul class="mb-6 mt-2 flex items-center">
+                <!-- >NVMe Drive</label -->
+                <!-- <ul class="mb-6 mt-2 flex items-center">
                   <li
                     v-for="(item, index) in [
                       { id: 'ssd', name: 'SSD' },
@@ -104,7 +119,7 @@
                       {{ item.name }}
                     </label>
                   </li>
-                </ul>
+                </ul> -->
 
                 <input
                   id="custom-vps-drive-count"
@@ -117,10 +132,16 @@
                 />
               </div>
               <div class="relative col-span-2 flex items-end justify-end gap-1">
-                <span class="text-right text-2xl font-bold">{{ drive }}</span>
-                <span
+                <input
+                  v-model.number="drive"
+                  min="20"
+                  max="1000"
+                  step="10"
+                  type="number"
+                  class="w-full appearance-none rounded text-right text-2xl font-bold transition-colors focus:bg-gray-100 focus:outline-none"
+                /><span
                   class="absolute bottom-1 left-full mb-1 ml-0.5 text-lg leading-4 text-gray-500"
-                  >Gb</span
+                  >ГБ</span
                 >
               </div>
             </div>
@@ -128,30 +149,51 @@
         </div>
         <div
           data-name="card"
-          class="relative flex min-w-96 flex-col items-center justify-center rounded-2xl border-2 border-emerald-400 p-8"
+          class="relative flex flex-col items-center justify-center rounded-2xl border-2 border-emerald-400 p-8 md:min-w-80 lg:min-w-96"
         >
           <span
             class="absolute top-12 inline-block select-none justify-self-start rounded-full border border-emerald-500 bg-emerald-50 px-4 text-sm text-emerald-500"
-            >selected</span
+            >выбрано</span
           >
-          <div class="mt-24 text-gray-500 line-through">
-            <span>{{ price[0] }}</span>
-            <span v-if="price[1]">.{{ price[1] }}</span>
-            €/mo
+          <div
+            v-if="appStore.hasDiscount"
+            class="relative -ml-5 text-gray-500"
+            :class="{ 'mt-24': appStore.hasDiscount }"
+          >
+            <span class="absolute inset-0 top-2.5 -rotate-6">
+              <figure
+                class="absolute -inset-x-2 h-1 rounded-full bg-red-400 bg-opacity-50"
+              />
+              <span
+                class="text-opacity-8 absolute left-full top-px ml-3 flex h-16 w-16 -translate-y-1/2 transform items-center rounded-full bg-gradient-to-tr from-red-50 to-white pl-1.5 text-lg font-medium text-red-400"
+                >-10%</span
+              >
+            </span>
+            <span>{{ customPrice[0] }}</span>
+            <span v-if="customPrice[1]">.{{ customPrice[1] }}</span>
+            €/мес
           </div>
-          <div class="relative mb-10 mt-2 flex items-baseline text-gray-700">
-            <span class="text-6xl font-extrabold leading-none tracking-tight">{{
-              priceWithDiscount[0]
-            }}</span>
+          <div
+            class="relative flex items-baseline text-gray-700"
+            :class="{
+              'mb-10 mt-24': !appStore.hasDiscount,
+              'mb-8 mt-2': appStore.hasDiscount,
+            }"
+          >
+            <span
+              class="text-5xl font-extrabold leading-none tracking-tight lg:text-6xl"
+              >{{ priceWithDiscount[0] }}</span
+            >
             <span
               v-if="priceWithDiscount[1]"
-              class="text-5xl font-bold leading-none tracking-tight"
+              class="text-4xl font-bold leading-none tracking-tight lg:text-5xl"
               >.{{ priceWithDiscount[1] }}</span
             >
             <span class="ml-2 leading-none"
-              ><span class="text-5xl font-semibold text-gray-600">€</span
+              ><span class="text-4xl font-semibold text-gray-600 lg:text-5xl"
+                >€</span
               ><span class="text-gray-400">/</span
-              ><span class="text-gray-600">mo</span></span
+              ><span class="text-gray-600">мес</span></span
             >
           </div>
           <button
@@ -159,91 +201,111 @@
             class="c-btn w-full border-0 bg-emerald-400 py-2.5 text-lg uppercase tracking-wider text-white hover:bg-emerald-600"
             @click.prevent="submit"
           >
-            Select
+            Выбрать
+            <!-- Select -->
           </button>
           <p class="mt-4 text-xs italic text-gray-500">
-            You can change your parameters later
+            Вы можете изменить параметры позже
+            <!-- You can change your parameters later -->
           </p>
         </div>
       </form>
     </section>
 
-    <section class="mt-12 min-w-2xl rounded-3xl bg-white px-16 py-12">
-      <header class="-mt-4 text-center font-medium text-gray-500">
-        Predefined price plans
+    <section
+      class="mt-6 rounded-3xl bg-white px-8 py-10 sm:min-w-sm md:min-w-2xl md:max-w-4xl lg:mt-12 lg:px-16 lg:py-12"
+    >
+      <header
+        class="-mb-4 -mt-4 text-sm font-semibold text-gray-500 md:mb-6 md:text-center"
+      >
+        Готовые конфигурации
       </header>
-      <ul v-if="tariffsStore.data?.results" class="mt-8">
+      <ul v-if="tariffsStore.data?.results" class="lg:mt-8">
         <li
-          class="grid grid-cols-7 items-center rounded border-gray-100 bg-gray-50 py-3 last:border-0"
+          class="hidden grid-cols-7 items-center rounded border-gray-100 bg-gray-50 py-3 last:border-0 md:grid"
         >
           <div class="col-span-2"></div>
           <div
             class="col-span-4 grid grid-cols-4 gap-6 pr-12 text-xs font-medium uppercase tracking-wider text-gray-500"
           >
-            <button class="text-right">CPU cores</button>
-            <button class="text-right">Memory</button>
-            <button class="text-right">Drive</button>
-            <button class="text-right">Price</button>
+            <div class="flex justify-end">
+              <button
+                class="relative block text-right"
+                @click="toggleSort('cores')"
+              >
+                <IconWrap
+                  v-if="sortDirection && sortField === 'cores'"
+                  v-bind="{
+                    name:
+                      sortDirection === 'asc'
+                        ? 'icon-arrow-up'
+                        : 'icon-arrow-down',
+                  }"
+                  class="absolute right-full top-1/2 h-4 w-4 -translate-x-1 -translate-y-1/2 text-gray-400"
+                />Процессор
+              </button>
+            </div>
+            <div class="flex justify-end" @click="toggleSort('memory')">
+              <button class="relative block text-right">
+                <IconWrap
+                  v-if="sortDirection && sortField === 'memory'"
+                  v-bind="{
+                    name:
+                      sortDirection === 'asc'
+                        ? 'icon-arrow-up'
+                        : 'icon-arrow-down',
+                  }"
+                  class="absolute right-full top-1/2 h-4 w-4 -translate-x-1 -translate-y-1/2 text-gray-400"
+                />Память
+              </button>
+            </div>
+            <div class="flex justify-end" @click="toggleSort('hdd_space')">
+              <button class="relative block text-right">
+                <IconWrap
+                  v-if="sortDirection && sortField === 'hdd_space'"
+                  v-bind="{
+                    name:
+                      sortDirection === 'asc'
+                        ? 'icon-arrow-up'
+                        : 'icon-arrow-down',
+                  }"
+                  class="absolute right-full top-1/2 h-4 w-4 -translate-x-1 -translate-y-1/2 text-gray-400"
+                />Диск
+              </button>
+            </div>
+            <div class="relative flex justify-end">
+              <span
+                v-if="appStore.hasDiscount"
+                class="absolute left-full top-1 ml-1 flex h-10 w-10 -translate-y-1/2 -rotate-6 transform items-center rounded-full border-2 border-red-200 bg-gradient-to-tr from-red-50 to-white pl-0.5 font-semibold text-red-400 text-opacity-80"
+                >-10%</span
+              >
+              <button
+                class="relative block text-right"
+                @click="toggleSort('price')"
+              >
+                <IconWrap
+                  v-if="sortDirection && sortField === 'price'"
+                  v-bind="{
+                    name:
+                      sortDirection === 'asc'
+                        ? 'icon-arrow-up'
+                        : 'icon-arrow-down',
+                  }"
+                  class="absolute right-full top-1/2 h-4 w-4 -translate-x-1 -translate-y-1/2 text-gray-400"
+                />Цена
+              </button>
+            </div>
+            <!-- <button class="text-right">CPU</button>
+            <button class="text-right">Memory</button> -->
+            <!-- <button class="text-right">Drive</button> -->
+            <!-- <button class="text-right">Price</button> -->
           </div>
         </li>
-        <li
-          v-for="(item, index) in tariffsStore.data?.results"
+        <VPSPriceLI
+          v-for="(item, index) in sortedTariffs"
           :key="`pk-vps-${item.pk}`"
-          class="grid grid-cols-7 items-center"
-          :class="{
-            'relative -mx-9 -mt-px rounded-2xl border-2 border-emerald-300 px-8 py-6':
-              item.pk === 434,
-            'border-b-2 border-gray-100 py-4 last:border-0': item.pk !== 434,
-          }"
-        >
-          <span
-            v-if="item.pk === 434"
-            class="absolute -top-0.5 left-8 -translate-y-1/2 transform rounded-full border-2 border-emerald-300 bg-white px-4 py-0.5 text-xs font-normal leading-none text-emerald-500"
-            >Popular</span
-          >
-
-          <div
-            class="col-span-2"
-            :class="{
-              'text-sm text-gray-600': item.pk !== 434,
-              'flex flex-col items-start font-medium text-emerald-600':
-                item.pk === 434,
-            }"
-          >
-            {{ item.name }}
-          </div>
-
-          <div class="col-span-4 grid grid-cols-4 gap-6 pr-12 text-gray-800">
-            <span class="text-right font-bold">{{ item.cores }}</span>
-            <span class="text-right"
-              ><span class="font-bold">{{ item.memory.split(' ')[0] }}</span
-              >&thinsp;<span class="text-xxs text-gray-600">{{
-                item.memory.split(' ')[1]
-              }}</span></span
-            >
-            <span class="text-right">
-              <span class="font-bold">{{ item.hdd_space.split(' ')[0] }}</span
-              >&thinsp;<span class="text-xxs text-gray-600"
-                >{{ item.hdd_space.split(' ')[1] }} SSD</span
-              ></span
-            >
-            <span class="text-right"
-              ><span class="font-bold">{{ item.price }}</span
-              >&thinsp;<span class="text-xxs text-gray-600">€/mo</span></span
-            >
-          </div>
-
-          <button
-            class="c-btn py-1 text-sm"
-            :class="{
-              ' bg-emerald-400 text-white hover:bg-emerald-500':
-                item.pk === 434,
-              'border-2 border-emerald-500 text-emerald-700': item.pk !== 434,
-            }"
-          >
-            Select
-          </button>
-        </li>
+          v-bind="{ item, index, list: sortedTariffs }"
+        />
       </ul>
     </section>
   </main>
@@ -252,6 +314,10 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import { fetchTariffs, tariffsStore } from '/@/stores/tariffs'
+import { appStore } from '/@/stores/app'
+
+import VPSPriceLI from '/@/components/VPSPriceLI.vue'
+import IconWrap from '/@/components/IconWrap.vue'
 
 const formType = ref<'stand-alone' | 'one-of'>('stand-alone')
 
@@ -288,25 +354,66 @@ const memPrice = 1.5
 const corePrice = 1.5
 const drivePrice = 1
 
-const priceNum = computed(
+const customPriceNum = computed(
   () =>
     memory.value * memPrice +
     cores.value * corePrice +
     drive.value * drivePrice * (driveType.value === 'ssd' ? 0.75 : 1)
 )
 
-const price = computed(() => [
-  getInt(priceNum.value),
-  getRemainder(priceNum.value),
+const customPrice = computed(() => [
+  getInt(customPriceNum.value),
+  getRemainder(customPriceNum.value),
 ])
 
 const priceWithDiscount = computed(() => {
-  const num = priceNum.value * 0.67
+  const num = customPriceNum.value * 0.67
 
   return [getInt(num), getRemainder(num)]
 })
 
 fetchTariffs()
+
+/**
+ *
+ */
+const sortField = ref<'price' | 'memory' | 'hdd_space' | 'cores'>()
+const sortDirection = ref<'asc' | 'dsc' | null>(null)
+
+function toggleSort(k: 'price' | 'memory' | 'hdd_space' | 'cores') {
+  if (!sortDirection.value || sortField.value !== k) {
+    sortDirection.value = 'asc'
+  } else {
+    sortDirection.value = sortDirection.value === 'asc' ? 'dsc' : null
+  }
+
+  if (!sortField.value || sortField.value !== k) sortField.value = k
+}
+const sortedTariffs = computed(() => {
+  if (!tariffsStore.data?.results) return []
+  if (!sortDirection.value) return tariffsStore.data.results
+
+  const copy = [...tariffsStore.data?.results]
+  copy.sort((a, b) => {
+    let a_num = 0
+    let b_num = 0
+
+    if (sortField.value === 'memory' || sortField.value === 'hdd_space') {
+      const astr = a[sortField.value].split(' ')[0]
+      const bstr = b[sortField.value].split(' ')[0]
+
+      a_num = Number(astr)
+      b_num = Number(bstr)
+    } else if (sortField.value) {
+      a_num = a[sortField.value]
+      b_num = b[sortField.value]
+    }
+
+    return sortDirection.value === 'asc' ? a_num - b_num : b_num - a_num
+  })
+
+  return copy
+})
 </script>
 
 <styles lang="postcss">
@@ -325,7 +432,7 @@ fetchTariffs()
   background: transparent; /* Otherwise white in Chrome */
   -webkit-appearance: none;
 
-  @apply min-w-52;
+  @apply lg:min-w-52;
 }
 
 .c-input-range:focus {
@@ -361,5 +468,11 @@ fetchTariffs()
 
 .c-input-range::-moz-range-track {
   @apply h-4 w-full cursor-pointer rounded-full bg-gray-50 shadow-inner transition duration-250 ease-out-sine;
+}
+
+input[type='number'] {
+  inset: 0.5rem;
+
+  @apply border-4 border-transparent leading-3 focus:border-gray-100;
 }
 </styles>

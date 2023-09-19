@@ -25,7 +25,6 @@
           }"
           @update:model-value="updateIsError"
         />
-
         <AwaitButton
           v-bind="{
             loading: tariffsStore.status === 'loading',
@@ -36,6 +35,15 @@
         >
           Получить тарифы
         </AwaitButton>
+
+        <ToggleEditor
+          v-model="appStore.hasDiscount"
+          v-bind="{
+            id: 'has-discount-toggle',
+            label: 'Есть скидка',
+          }"
+          class="mt-8"
+        />
       </section>
     </div>
   </Transition>
