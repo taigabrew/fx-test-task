@@ -472,6 +472,7 @@ const sortedTariffs = computed(() => {
 
 input[type='number'] {
   inset: 0.5rem;
+  -moz-appearance: textfield; /* Firefox */
 
   @apply border-4 border-transparent leading-3 focus:border-gray-100;
 }
